@@ -142,7 +142,6 @@ updateNeighbors = () => {
 }
 
 const updateSelectStatus = (i, j) => {
-	
   console.log(i, j);
   grid[i][j].selected = !grid[i][j].selected; 
   if (grid[i][j].selected) {
