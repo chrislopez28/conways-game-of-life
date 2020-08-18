@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" type="text/css" href="life.css" />
+</head>
+
+<body>
+<svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .small { font: 8px sans-serif; }
+  </style>
+  <text x="10" y="10" class="small">Conway's Game of Life</text>
+</svg>
+
+<div class="main-screen">
+    <div class="grid-container">
+        <svg id="grid" viewBox="0 0 101 101" xmlns="www.w3.org/2000/svg">
+        </svg>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="clearCells(); updateCells();">Clear</button>
+    <button onclick="randomizeCells(); updateCells();">Randomize</button>
+    <button onclick="updateNeighbors(); updateLifeStatus(); updateCells();">Next Generation</button>
+    <button id="runButton" onclick="runGame();">Run</button>    
+</div>
+
+
+<script type="text/javascript" src="life.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+body {
+    background: rgb(228, 248, 222);
+}
+
+.rect:hover {
+    stroke: orange;
+    cursor: cell;
+  }
+  
+.selected {
+fill: green;
+}
+
+.main-screen {
+    width: 90vw;
+    padding: 1rem;
+    margin: auto;
+    background: white;
+    text-align: center;
+}
+
+.grid-container {
+    width: 80vw;
+    margin: auto;
+    background: white;
+}
+
+.controls {
+    margin: auto;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+button {
+    font-size: xxx-large;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: rgb(125, 118, 143);
+}
