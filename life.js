@@ -1,8 +1,8 @@
 let svgns = "http://www.w3.org/2000/svg";
 let viewBoxWidth = 100;
 let viewBoxHeight = 100;
-let rows = 100;
-let cols = 100;
+let rows = 64;
+let cols = 64;
 let strokeWidth = 2.5 / rows;
 let spacing = 5;
 let rounding = 0.25;
@@ -31,13 +31,30 @@ for (let i = 0; i < cols; i++) {
 
 svg = document.getElementById('grid');
 
+var moveListener = null;
+
 clicked = (event) => {
 	let m = oMousePosSVG(event);
-  console.log(m.y, m.x);
+  //console.log(m.y, m.x);
   updateSelectStatus(Math.floor(m.y / gridY), Math.floor(m.x / gridX));
 }
+const mouseHold = (event) => {
+  //console.log("hold");
+  moveListener = svg.addEventListener("mousemove", clicked);
+}
 
+const mouseStopHold = () => {
+  //console.log("cleared");
+  svg.removeEventListener("mousemove", clicked);
+}
 svg.addEventListener("click", clicked);
+svg.addEventListener("mousedown", mouseHold);
+svg.addEventListener("mouseup", mouseStopHold);
+
+var mouseInterval = null;
+
+let generationNumber = 0;
+let alive = 0;
 
 var grid = [];
 
@@ -65,6 +82,8 @@ randomizeCells = () => {
     	grid[i][j].selected = ( Math.round(Math.random()) == 0 ? false : true );
     }
   }
+  generationNumber = 0;
+  document.getElementById("generation").innerHTML = generationNumber;
 }
 
 updateLifeStatus = () => {
@@ -82,18 +101,25 @@ updateLifeStatus = () => {
       }
     }
   }
+  generationNumber++;
+  document.getElementById("generation").innerHTML = generationNumber;
 }
 
 updateCells = () => {
+  alive = 0;
 	for (let i = 0; i < rows; i++) {
   	for (let j = 0; j < cols; j++) {
       if (grid[i][j].selected) {
         document.getElementById(`${i}_${j}`).classList.add("selected");
+        alive++
+        
       } else {
         document.getElementById(`${i}_${j}`).classList.remove("selected");
     	}
     }
   }
+  document.getElementById("alive").innerHTML = alive;
+  document.getElementById("percent").innerHTML = (100 * alive/4096).toFixed(2);
 }
 
 clearCells = () => {
@@ -102,6 +128,8 @@ clearCells = () => {
     	grid[i][j].selected = false;
     }
   }
+  generationNumber = 0;
+  document.getElementById("generation").innerHTML = generationNumber;
 }
 
 countNeighbors = (i, j) => {
@@ -142,7 +170,7 @@ updateNeighbors = () => {
 }
 
 const updateSelectStatus = (i, j) => {
-  console.log(i, j);
+  //console.log(i, j);
   grid[i][j].selected = !grid[i][j].selected; 
   if (grid[i][j].selected) {
   	document.getElementById(`${i}_${j}`).classList.add("selected");

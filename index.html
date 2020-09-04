@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conway's Game of Life</title>
   <link rel="stylesheet" type="text/css" href="life.css" />
 </head>
 
 <body>
-  <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-    <style>
-      .small { font: 8px sans-serif; }
-    </style>
-    <text x="10" y="10" class="small">Conway's Game of Life</text>
-  </svg>
+  <h1>Conway's Game of Life</h1>
 
   <div class="main-screen">
       <div class="grid-container">
@@ -27,6 +22,15 @@
       <button onclick="randomizeCells(); updateCells();">Randomize</button>
       <button onclick="updateNeighbors(); updateLifeStatus(); updateCells();">Next Generation</button>
       <button id="runButton" onclick="runGame();">Run</button>    
+  </div>
+  <div class="stats">
+    <p>
+      Generation Number: <span id="generation">0</span>
+    </p>
+    <p>
+      Alive Cells: <span id="alive">0</span> (<span id="percent">0</span>%)
+    </p>
+   
   </div>
   <script type="text/javascript" src="life.js"></script>
 </body>

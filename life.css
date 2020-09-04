@@ -1,5 +1,11 @@
 body {
     background: rgb(228, 248, 222);
+    font-family: "Courier New", Courier, monospace
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .rect:hover {
@@ -15,13 +21,13 @@ fill: green;
     width: 90vw;
     padding: 1rem;
     margin: auto;
-    background: white;
     text-align: center;
 }
 
 .grid-container {
-    width: 80vw;
-    margin: auto;
+    width: 16rem;
+    margin: 1rem auto;
+    padding: 1rem;
     background: white;
 }
 
@@ -32,8 +38,15 @@ fill: green;
 }
 
 button {
-    font-size: xxx-large;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    background: rgb(125, 118, 143);
+    font-family: inherit;
+    font-size: 1rem;
+    border: 0.1rem solid rgb(49, 88, 38);
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    margin: 0.1rem;
+    background: rgb(118, 143, 136);
+}
+
+.stats {
+    text-align: center;
 }
